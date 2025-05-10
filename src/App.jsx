@@ -55,7 +55,7 @@ function App() {
       </button>
 
       {/* Title */}
-      <h1 className="title">The Labyrinth</h1>
+      <h1 className="title">Labyrinth</h1>
 
       {/* Poem Display */}
       {poem && (
