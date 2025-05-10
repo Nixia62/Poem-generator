@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://Nixia62.github.io/labyrinth",
+  "homepage": "https://Nixia62.github.io/Poem-generator",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
