@@ -45,7 +45,7 @@ function App() {
   const [currentBg, setCurrentBg] = useState(backgrounds[0]);
   const audioRef = useRef(null);
 
-  // Play music when currentTrack changes
+  //music for different tracks
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.pause();
@@ -60,7 +60,7 @@ function App() {
     // eslint-disable-next-line
   }, [currentTrack]);
 
-  // Mute/unmute when isMuted changes
+  // mute/unmut
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.muted = isMuted;
@@ -102,7 +102,7 @@ function App() {
         transition: 'background-image 0.5s'
       }}
     >
-      {/* Modal Trigger Button */}
+      {/* modal trigger btn */}
       <button
         onClick={() => setShowModal(true)}
         className="settings-btn"
@@ -111,15 +111,15 @@ function App() {
         ⚙️
       </button>
 
-      {/* Music Toggle Button */}
+      {/* music toggle btn */}
       <button onClick={toggleMusic} className="music-button" title="Toggle Music">
         {isMuted ? '🔇' : '🎵'}
       </button>
 
-      {/* Title */}
+      {/* title */}
       <h1 className="title">Labyrinth</h1>
 
-      {/* Poem Display */}
+      {/* to display the poems */}
       {poem && (
         <div className="poem-box">
           {poem.map((line, index) => (
@@ -131,12 +131,12 @@ function App() {
         </div>
       )}
 
-      {/* Generate Button */}
+      {/* genertin btn*/}
       <button onClick={generatePoem} className="generate-button">
         Generate
       </button>
 
-      {/* Settings Modal */}
+      {/* modal */}
       <SettingsModal
         open={showModal}
         onClose={() => setShowModal(false)}
