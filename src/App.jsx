@@ -36,21 +36,20 @@ const tracks = [
   { name: "Genshin-Night", src: music9 }
 ];
 
-
 function App() {
-  const [poem, setPoem] = useState(null);
+  const [currentPoemIndex, setCurrentPoemIndex] = useState(null);
   const [isMuted, setIsMuted] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [currentTrack, setCurrentTrack] = useState(tracks[0]);
   const [currentBg, setCurrentBg] = useState(backgrounds[0]);
   const audioRef = useRef(null);
 
-  //music for different tracks
+  // music for different tracks
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.pause();
     }
-    const audio = new Audio(currentTrack);
+    const audio = new Audio(currentTrack.src ? currentTrack.src : currentTrack);
     audio.loop = true;
     audio.volume = 1;
     audio.muted = isMuted;
@@ -60,19 +59,20 @@ function App() {
     // eslint-disable-next-line
   }, [currentTrack]);
 
-  // mute/unmut
+  // mute/unmute
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.muted = isMuted;
     }
   }, [isMuted]);
 
+  // storing index of generated random poem
   const generatePoem = () => {
     const randomIndex = Math.floor(Math.random() * poems.length);
-    setPoem(poems[randomIndex]);
+    setCurrentPoemIndex(randomIndex);
     // Play music if not already playing
     if (!audioRef.current) {
-      const audio = new Audio(currentTrack);
+      const audio = new Audio(currentTrack.src ? currentTrack.src : currentTrack);
       audio.loop = true;
       audio.volume = 1;
       audio.muted = isMuted;
@@ -81,6 +81,19 @@ function App() {
     } else {
       audioRef.current.play();
     }
+  };
+
+  // Next/Prev navigation
+  const showPrevPoem = () => {
+    setCurrentPoemIndex(prev =>
+      prev === null ? 0 : (prev - 1 + poems.length) % poems.length
+    );
+  };
+
+  const showNextPoem = () => {
+    setCurrentPoemIndex(prev =>
+      prev === null ? 0 : (prev + 1) % poems.length
+    );
   };
 
   const toggleMusic = () => {
@@ -116,13 +129,13 @@ function App() {
         {isMuted ? '🔇' : '🎵'}
       </button>
 
-      {/* title */}
+      {/* titlle */}
       <h1 className="title">Labyrinth</h1>
 
-      {/* to display the poems */}
-      {poem && (
+      {/* to dispay the pomes */}
+      {currentPoemIndex !== null && (
         <div className="poem-box">
-          {poem.map((line, index) => (
+          {poems[currentPoemIndex].map((line, index) => (
             <span key={index} className="poem-line">
               {line}
               {line === '' ? <br /> : <><br /><br /></>}
@@ -131,10 +144,29 @@ function App() {
         </div>
       )}
 
-      {/* genertin btn*/}
-      <button onClick={generatePoem} className="generate-button">
-        Generate
-      </button>
+      {/* navigation btns */}
+      <div style={{ display: "flex", justifyContent: "center", gap: "1rem" }}>
+        <button
+          onClick={showPrevPoem}
+          className="generate-button"
+          disabled={currentPoemIndex === null}
+        >
+          Prev
+        </button>
+        <button
+          onClick={generatePoem}
+          className="generate-button"
+        >
+          Random
+        </button>
+        <button
+          onClick={showNextPoem}
+          className="generate-button"
+          disabled={currentPoemIndex === null}
+        >
+          Next
+        </button>
+      </div>
 
       {/* modal */}
       <SettingsModal
