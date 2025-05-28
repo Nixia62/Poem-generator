@@ -421,6 +421,48 @@ const poems = [
   "to relive the moments which made us go mad",
   "but shall we embrace joy and pain",
   "and lets not experience the dark rain"
+],
+    [
+  "Each morning calls with tender ache,",
+  "though bones may bend and soul do break,",
+  "yet still those hands shall reach for the day,",
+  "though dreams may falter or drift away...",
+  "",
+  "Your soul that trembles still holds flame,",
+  "though none may reminisce or calls its name,",
+  "a gentle heart not made of stone,",
+  "still dares the dark and stands alone...",
+  "",
+  "No shame in tears ,nor in delay,",
+  "for even rest can pave the way,",
+  "and though unacknowledged,love remains,",
+  "like roots that hold through storm and rain...",
+  "",
+  "For courage shall bloom not loud but deep,",
+  "in those who rise ,who sow and keep,",
+  "and even if the light is low,",
+  "it guides enough for u to grow..."
+],
+    [
+  "The moon has wept in silver streams,",
+  "upon the ruins of your cherished dreams,",
+  "and night in hush did steal thy breath,",
+  "as if the stars are punished with their death...",
+  "",
+  "The tides withdrew , the ocean sighed, ",
+  "the pulse of all the world had died, ",
+  "yet deep within the ancient old sea,",
+  "there stirred a light unseen by thee...",
+  "",
+  "Not all who fall are meant to die",
+  "some sink to learn the art to fly.",
+  "the blaze returns not loud, but slow,",
+  "a pulse beneath the frozen snow... ",
+  "",
+  "Though constellations try to dim your name,",
+  "still thee shall rise and stake your claim.",
+  "the night was long, the path unsure",
+  "but you are light, and light endures...  "
 ]
   ];
   
